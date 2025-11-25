@@ -1,0 +1,221 @@
+/* ============================================================
+   ROOT VARIABLES – LIGHT MODE (default)
+============================================================ */
+:root {
+    /* Core colors */
+    --emi-primary: #ff8c42;
+    --emi-light: #ffb36b;
+
+    --bonnie-primary: #6a3ea1;
+    --bonnie-light: #b08ed6;
+
+    --fan-gradient: linear-gradient(90deg, #ff8c42, #6a3ea1);
+
+    /* Light theme base */
+    --bg-color: #f9f4ff;
+    --text-color: #333;
+    --header-footer-bg: var(--fan-gradient);
+
+    --card-bg: #ffffff;
+    --shadow-soft: 0px 4px 15px rgba(0, 0, 0, 0.08);
+
+    --emi-section-bg: var(--emi-light);
+    --bonnie-section-bg: var(--bonnie-light);
+    --shared-section-bg: var(--fan-gradient);
+}
+
+/* ============================================================
+   DARK MODE
+============================================================ */
+:root[data-theme="dark"] {
+    --bg-color: #1a1124;
+    --text-color: #f4eaff;
+
+    --header-footer-bg: linear-gradient(90deg, #6a3ea1, #ff8c42);
+
+    --card-bg: #180a22;
+
+    --emi-section-bg: #7a4f2b;
+    --bonnie-section-bg: #4c2c6b;
+    --shared-section-bg: linear-gradient(90deg, #6a3ea1, #ff8c42);
+
+    --shadow-soft: 0px 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   GLOBAL STYLES
+============================================================ */
+* {
+    transition: background-color .3s ease, color .3s ease, border-color .3s ease;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Prevent layout overflow */
+}
+
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* ============================================================
+   MAIN CONTENT AREA (pushes footer down)
+============================================================ */
+main {
+    flex: 1; /* already present but required */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centers vertically */
+    align-items: center; /* centers horizontally */
+
+    padding: 20px; /* smaller padding so centering isn’t pushed */
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/*.page-card {
+    width: 100%;
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    box-sizing: border-box;
+}*/
+
+/* ============================================================
+   HEADER (flex layout)
+============================================================ */
+header {
+    width: 100%;
+    padding: 12px 20px;
+
+    background: var(--header-footer-bg);
+    color: white;
+    box-shadow: var(--shadow-soft);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 1.4rem;
+    font-weight: 600;
+    box-sizing: border-box;
+}
+
+.logo {
+    white-space: nowrap;
+    font-size: 1.3rem;
+}
+
+/* ============================================================
+   NAVIGATION (inside header)
+============================================================ */
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px; /* Helps hide scrollbar */
+}
+
+.top-nav::-webkit-scrollbar {
+    height: 4px;
+}
+.top-nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.top-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    transition: 0.3s ease;
+
+    white-space: nowrap;
+}
+
+.top-nav a:hover {
+    transform: scale(1.06);
+}
+
+/* ============================================================
+   THEME BUTTON
+============================================================ */
+.theme-button {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+
+    transition: 0.3s ease;
+    white-space: nowrap;
+}
+
+.theme-button:hover {
+    opacity: 0.7;
+}
+
+/* ============================================================
+   SECTION STYLES (Emi, Bonnie, Shared)
+============================================================ */
+.emi-section {
+    background: var(--emi-section-bg);
+    border-left: 7px solid var(--emi-primary);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.bonnie-section {
+    background: var(--bonnie-section-bg);
+    border-left: 7px solid var(--bonnie-primary);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.shared-section {
+    background: var(--shared-section-bg);
+    color: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+
+    background: var(--header-footer-bg);
+    color: white;
+    box-shadow: var(--shadow-soft);
+}

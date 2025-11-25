@@ -1,0 +1,205 @@
+/* ============================================================
+   HOME HERO UPGRADE
+============================================================ */
+
+/* Full page layout */
+.home-hero {
+    min-height: calc(100vh - 160px); /* full screen minus header/footer */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* center vertically */
+    align-items: center; /* center horizontally */
+    text-align: center;
+    padding: 20px; /* small padding so centering is not pushed */
+    box-sizing: border-box;
+}
+
+/* -------------------------------
+   HERO TITLE ANIMATION
+-------------------------------- */
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+
+    white-space: nowrap;
+
+    background: var(--fan-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlide 0.8s forwards;
+}
+
+@keyframes fadeSlide {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* -------------------------------
+   SUBTITLE
+-------------------------------- */
+.hero-subtitle {
+    max-width: 750px;
+    margin-top: 12px;
+    font-size: 1.15rem;
+    line-height: 1.6;
+
+    opacity: 0;
+    animation: fadeIn 1.2s forwards 0.2s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.hero-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* ensures text is centered */
+    text-align: center; /* ensures text itself is centered */
+}
+
+/* -------------------------------
+   BUTTONS
+-------------------------------- */
+.hero-buttons {
+    margin-top: 28px;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hero-btn {
+    padding: 12px 22px;
+    border-radius: 16px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+
+    transition: 0.25s ease;
+
+    /* Dynamic color depending on theme */
+    color: white; 
+    background: var(--fan-gradient); /* gradient background keeps contraste */
+}
+
+.hero-btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.15);
+}
+
+
+/* -------------------------------
+   SPOTLIGHT IMAGE
+-------------------------------- */
+.hero-image {
+    margin-top: 40px;
+    animation: fadeIn 1.5s forwards;
+}
+
+.hero-image img {
+    width: 260px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.25);
+
+    border: 4px solid rgba(255,255,255,0.15);
+}
+
+/* -------------------------------
+   STAT CARDS
+-------------------------------- */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    padding: 18px 25px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+
+    min-width: 140px;
+}
+
+.stat-card h3 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.stat-card p {
+    margin: 5px 0 0;
+    opacity: 0.8;
+    font-size: 0.95rem;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    .hero-image img {
+        width: 200px;
+    }
+}
+
+.hero-image-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    margin-top: 40px;
+}
+
+.image-card {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.25);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-card.center {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.image-card.side {
+    opacity: 0.5;
+}
+
+.carousel-btn {
+    background: rgba(0,0,0,0.4);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: rgba(0,0,0,0.6);
+}
