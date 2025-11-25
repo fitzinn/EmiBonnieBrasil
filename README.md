@@ -69,7 +69,7 @@ index.html → app container
 
 1️⃣ Baixe ou clone o repositório:
 
-git clone https://github.com/seuusuario/emibonnie-fanpage.git
+git clone https://github.com/seuusuario/EmiBonnieBrasil.git
 
 2️⃣ Abra **index.html** no navegador (não precisa de servidor).
 
@@ -108,7 +108,7 @@ git clone https://github.com/seuusuario/emibonnie-fanpage.git
 
 O tema usa:
 
-<html data-theme="light"> ou <html data-theme="dark">
+html data-theme="light" ou html data-theme="dark"
 
 E o CSS responde com:
 
