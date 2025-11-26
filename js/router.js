@@ -34,28 +34,45 @@ function loadCSSForPage(page) {
 // Load page
 async function loadPage(page) {
     try {
-        const response = await fetch(page);
+        const cleanPage = page.split('#')[0]; // remove hash se existir
+        const response = await fetch(cleanPage);
         if (!response.ok) throw new Error("Page missing");
         const html = await response.text();
         app.innerHTML = html;
 
-        // Carrega CSS da página
-        loadCSSForPage(page);
+        loadCSSForPage(cleanPage);
 
-        // Carrossel só na home
-        if (page.includes("home.html")) setTimeout(initCarousel, 0);
+        if (cleanPage.includes("home.html")) setTimeout(initCarousel, 0);
+
+        // Depois de carregar, rola para o hash se houver
+        const hash = page.split('#')[1];
+        if (hash) {
+            const target = document.getElementById(hash);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
 
     } catch (e) {
         app.innerHTML = "<h2>Página não encontrada 😢</h2>";
     }
 }
 
+
 // Router
 function router() {
-    const path = location.hash.replace("#", "") || "/home";
+    const hash = location.hash;
+
+    // Se for hash interno de uma página (começa com # e não tem /), só rola a seção
+    if (hash && !hash.includes("/")) {
+        const target = document.querySelector(hash);
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+    }
+
+    // SPA routing normal
+    const path = hash.replace("#", "") || "/home";
     const page = routes[path];
     if (page) loadPage(page);
-    else app.innerHTML = "<h2>Página não encontrada.</h2>";
+    else app.innerHTML = "<h2>Página não encontrada 😢</h2>";
 }
 
 // Listeners
