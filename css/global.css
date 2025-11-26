@@ -76,7 +76,7 @@ main {
 
     padding: 20px; /* smaller padding so centering isn’t pushed */
     width: 100%;
-    max-width: 900px;
+    max-width: 2000px;
 
     margin: 0 auto;
     box-sizing: border-box;

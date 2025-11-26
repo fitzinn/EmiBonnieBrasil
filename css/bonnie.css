@@ -1,0 +1,136 @@
+/* ============================================================
+   bonnie PAGE – Wikipedia Style Layout (CORRIGIDO)
+============================================================ */
+
+/* Main wrapper for bonnie page */
+.bonnie-main {
+    display: flex !important;
+    flex-direction: row !important;
+
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+
+    width: 100% !important; 
+    max-width: none !important;
+    margin: 0 !important;      
+    padding: 20px !important;
+
+    gap: 30px;
+    box-sizing: border-box;
+
+    text-align: left;            
+}
+
+/* ============================
+   Sidebar (Left Navigation)
+============================ */
+.bonnie-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+
+    /* Mantém visível ao rolar, mas NÃO é fixa na página */
+    position: sticky;
+    top: 20px;
+
+    /* Faz a sidebar ocupar a altura inteira disponível dentro do body */
+    align-self: flex-start;
+    height: fit-content;
+    max-height: calc(100vh - 40px); /* ajusta ao tamanho visível */
+    overflow-y: auto;
+
+    margin-left: 0 !important;
+}
+
+/* Sidebar title */
+.bonnie-sidebar h3 {
+    margin-top: 0;
+    color: var(--bonnie-primary);
+    font-size: 1.1rem;
+}
+
+/* Sidebar links container */
+.bonnie-sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Each link */
+.bonnie-sidebar nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: 0.2s ease;
+}
+
+.bonnie-sidebar nav a:hover {
+    background: var(--bonnie-light);
+    color: black;
+    transform: translateX(3px);
+}
+
+/* ============================
+   Main Content (Right Side)
+============================ */
+.bonnie-content {
+    flex: 1;             /* ocupa todo o espaço restante */
+    min-width: 0;        /* evita overflow horizontal */
+}
+
+.bonnie-content > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 10px !important;
+}
+
+.bonnie-title {
+    color: var(--bonnie-primary);
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+/* Section block */
+.bonnie-section-block {
+    background: var(--bonnie-section-bg);
+    border-left: 7px solid var(--bonnie-primary);
+    border-radius: 16px;
+    padding: 25px;
+    margin: 25px 0;
+    box-shadow: var(--shadow-soft);
+}
+
+.bonnie-section-block h2 {
+    color: var(--bonnie-primary);
+    margin-top: 0;
+}
+
+.bonnie-list {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.bonnie-list li {
+    margin: 8px 0;
+}
+
+/* ============================
+   Responsive behavior
+============================ */
+@media (max-width: 900px) {
+    .bonnie-main {
+        flex-direction: column;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .bonnie-sidebar {
+        width: 100%;
+        position: static;
+        margin: 0 0 20px 0;
+    }
+}
